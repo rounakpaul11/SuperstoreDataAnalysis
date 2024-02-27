@@ -16,7 +16,7 @@ if fl is not None:
     st.write(filename)
     df = pd.read_csv(filename, encoding = "ISO-8859-1")
 else:
-    os.chdir(r"C:\Users\ranja\Desktop\streamlit dashboard\Streamlit-dashboard")
+   # os.chdir(r"C:\Users\ranja\Desktop\streamlit dashboard\Streamlit-dashboard")
     df = pd.read_excel("Superstore.xls")
 
 
