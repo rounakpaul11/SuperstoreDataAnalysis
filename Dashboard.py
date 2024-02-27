@@ -18,7 +18,7 @@ if fl is not None:
     st.write(filename)
     df = pd.read_csv(fl, encoding="ISO-8859-1")  # Modified to read directly from file uploader
 else:
-    os.chdir(r"C:\Users\ranja\Desktop\streamlit dashboard\Streamlit-dashboard")
+   # os.chdir(r"C:\Users\ranja\Desktop\streamlit dashboard\Streamlit-dashboard")
     df = pd.read_excel("Superstore.xls")
 
 col1, col2 = st.columns((2))
