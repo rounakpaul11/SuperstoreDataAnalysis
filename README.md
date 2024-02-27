@@ -1,5 +1,6 @@
 # SuperstoreDataAnalysis
 Superstore Data Analysis Dashboard: Explore, visualize, and analyze sales data from a retail superstore using Streamlit and Plotly Express
+[DEPLOYED](https://superstore-data-analysis-rounak.streamlit.app/)
 
 
 ## Python Interactive Dashboard Development with Streamlit and Plotly
