@@ -18,7 +18,7 @@ if fl is not None:
     st.write(filename)
     df = pd.read_csv(fl, encoding="ISO-8859-1")  # Modified to read directly from file uploader
 else:
-    #os.chdir(r"C:\Users\ranja\Desktop\streamlit dashboard\Streamlit-dashboard")
+    os.chdir(r"C:\Users\ranja\Desktop\streamlit dashboard\Streamlit-dashboard")
     df = pd.read_excel("Superstore.xls")
 
 col1, col2 = st.columns((2))
@@ -83,7 +83,7 @@ cl1, cl2 = st.columns((2))
 with cl1:
     with st.expander("Category_ViewData"):
         st.write(category_df.style.background_gradient(cmap="Blues"))
-        csv = category_df.to_csv(index=False).encode('utf-8')
+        csv = category_df.to_csv(index=False).encode('ISO-8859-1')  # Changed encoding to ISO-8859-1
         st.download_button("Download Data", data=csv, file_name="Category.csv", mime="text/csv",
                            help='Click here to download the data as a CSV file')
 
@@ -91,7 +91,7 @@ with cl2:
     with st.expander("Region_ViewData"):
         region = filtered_df.groupby(by="Region", as_index=False)["Sales"].sum()
         st.write(region.style.background_gradient(cmap="Oranges"))
-        csv = region.to_csv(index=False).encode('utf-8')
+        csv = region.to_csv(index=False).encode('ISO-8859-1')  # Changed encoding to ISO-8859-1
         st.download_button("Download Data", data=csv, file_name="Region.csv", mime="text/csv",
                            help='Click here to download the data as a CSV file')
 
@@ -105,7 +105,7 @@ st.plotly_chart(fig2, use_container_width=True)
 
 with st.expander("View Data of TimeSeries:"):
     st.write(linechart.T.style.background_gradient(cmap="Blues"))
-    csv = linechart.to_csv(index=False).encode("utf-8")
+    csv = linechart.to_csv(index=False).encode("ISO-8859-1")  # Changed encoding to ISO-8859-1
     st.download_button('Download Data', data=csv, file_name="TimeSeries.csv", mime='text/csv')
 
 st.subheader("Hierarchical view of Sales using TreeMap")
@@ -132,6 +132,7 @@ with st.expander("Summary_Table"):
     df_sample = df[0:5][["Region", "State", "City", "Category", "Sales", "Profit", "Quantity"]]
     fig = ff.create_table(df_sample, colorscale="Cividis")
     st.plotly_chart(fig, use_container_width=True)
+
     st.markdown("Month wise sub-Category Table")
     filtered_df["month"] = filtered_df["Order Date"].dt.month_name()
     sub_category_Year = pd.pivot_table(data=filtered_df, values="Sales", index=["Sub-Category"], columns="month")
@@ -146,7 +147,7 @@ st.plotly_chart(data1, use_container_width=True)
 with st.expander("View Data"):
     st.write(filtered_df.iloc[:500, 1:20:2].style.background_gradient(cmap="Oranges"))
 
-csv = df.to_csv(index=False).encode('utf-8')
+csv = df.to_csv(index=False).encode('ISO-8859-1')  # Changed encoding to ISO-8859-1
 st.download_button('Download Data', data=csv, file_name="Data.csv", mime="text/csv")
 
 st.write("Made by Rounak Paul student at VIT Chennai")
